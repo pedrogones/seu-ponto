@@ -1,0 +1,10 @@
+import Alpine from 'alpinejs'
+
+window.Alpine = Alpine
+
+Alpine.start()
+import './bootstrap';
+
+function teste() {
+    console.log("testemaod");
+}
