@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,6 +12,8 @@ class DashboardController extends Controller
     }
 
     public function __invoke(Request $request){
-        return view('dashboard');
+
+        $posts = Post::query()->paginate(10);
+        return view('dashboard', compact('posts'));
     }
 }

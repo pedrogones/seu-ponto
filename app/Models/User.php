@@ -60,5 +60,32 @@ class User extends Authenticatable
             $this->attributes['password']=bcrypt($value);
         }
     }
+    public function photoProfile(): Attribute
+    {
+        return new Attribute(
+            get: function (): string {
+                $name = trim(collect(explode(' ', $this->name))->map(function ($segment) {
+                    return mb_substr($segment, 0, 1);
+                })->join(''));
+
+                return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&background=random&color=ffffff&size=200&rounded=true&bold=true&format=svg&length=1&uppercase=true';
+            }
+        );
+    }
+
+    public function role(): Attribute
+{
+    return new Attribute(
+        get: function () {
+            // Verifica se a relação 'roles' existe e não está vazia
+            if ($this->roles && !$this->roles->isEmpty()) {
+                return $this->roles->first()->name;
+            }
+
+            // Se a relação 'roles' não existe ou está vazia, retorne um valor padrão ou lide com isso conforme necessário
+            return 'Sem papel atribuído'; // ou qualquer valor padrão desejado
+        }
+    );
+}
 
 }

@@ -3,7 +3,7 @@
 @section('content')
 <div class=" px-5 py-2 lg:flex lg:items-center lg:justify-between">
     <div class=" flex justify-between min-w-0 flex-1">
-      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Back End Developer</h2>
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"> Posts</h2>
       <a href="{{ route('posts.create') }}" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
         Cadastrar
       </a>
@@ -16,12 +16,13 @@
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead class="bg-gray-50 dark:bg-gray-800">
                         <tr>
-                            <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                              Autor
-                            </th>
 
                             <th scope="col" class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                               Titulo
+                                Titulo
+                            </th>
+
+                            <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                              Autor
                             </th>
 
                             <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -37,17 +38,17 @@
                     <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                         @foreach ($posts as $user)
                         <tr>
-                            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                                <div>
-                                    <h2 class="font-medium text-gray-800 dark:text-white ">{{ $user->user->name }}</h2>
-                                </div>
-                            </td>
                             <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
                                 <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
                                   {{$user->title}}
                                 </div>
                             </td>
-                            <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
+                            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                                <div>
+                                    <h2 class="font-medium text-gray-800 dark:text-white ">{{ $user->user->name }}</h2>
+                                </div>
+                            </td>
+                            <td class="px-10 py-3 text-sm font-medium whitespace-nowrap">
                                 <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
                                   {{$user->content}}
                                 </div>

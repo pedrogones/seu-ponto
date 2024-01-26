@@ -26,7 +26,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        $users=User::all();
+        $users=User::query()->whereHas('roles', function($query){
+            $query->where('name', 'Author');
+        })->get();
 
         return view('post.create', compact('users'));
     }
@@ -60,17 +62,20 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        return view('post.edit');
+        $post = Post::find($id);
+        $users=User::query()->whereHas('roles', function($query){
+            $query->where('name', 'Author');
+        })->get();
+        return view('post.edit', compact('post', 'users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(PostRequest $request, Post $post, string $id)
+    public function update(Request $request, Post $post)
     {
-        $data = $request->validated();
-        $post->updated($data);
-
+        $data = $request->all();
+        $post->update($data);
         return redirect()->route('posts.index');
     }
 

@@ -9,12 +9,22 @@
       </a>
     </div>
 </div>
+<style>
+     .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+</style>
 
 <div class="p-4">
     <form action="{{ route('users.update', $user->id) }}"  method="POST">
         @csrf
         @method('PUT')
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-2 login-form">
             <div class="mb-3">
                 <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nome</label>
                 <div class="mt-2">
