@@ -15,11 +15,16 @@ class PermissionAcess
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next, $permission): Response
-    {
-        abort_if(Auth::check()&&!$request->user()->can($permission),
-        403,
-        'Voce não tem a Permissão: '.$permission,
-    );
-        return $next($request);
+{
+    if (!Auth::check() || !$request->user()) {
+        abort(403, 'Você não está autenticado.');
     }
+
+    if (!$request->user()->can($permission)) {
+        abort(403, 'Você não tem a permissão: ' . $permission);
+    }
+
+    return $next($request);
+}
+
 }

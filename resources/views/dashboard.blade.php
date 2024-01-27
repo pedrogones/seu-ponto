@@ -9,7 +9,7 @@
       <div style="border-radius: 20px" class="mt-10 grid max-w-2xl grid-cols-3 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
 
            @foreach($posts as $post)
-          <div class="bg-gradient-to-r from-[#ff80b5] to-[#9089fc]" style="border-radius: 20px">
+          <div class="bg-indigo-200" style="border-radius: 20px">
             <article style="margin-left:15px; margin-top:5px" class="flex max-w-xl flex-col items-start justify-between">
                 <div class="flex items-center gap-x-4 text-xs">
                   <time datetime="2020-03-16" class="text-gray-500">{{ $post->created_at->diffForHumans() }}</time>

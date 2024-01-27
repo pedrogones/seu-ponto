@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        $this->middleware('permission:user_view')->only(['index', 'show']);
+        $this->middleware('permission:user_create')->only(['create', 'store']);
+        $this->middleware('permission:user_update')->only(['edit', 'update']);
+        $this->middleware('permission:user_delete')->only('destroy');
+
+    }
     public function index(){
         $user=User::query()->paginate(10);
         return view('user.index', ['users'=>$user]);
