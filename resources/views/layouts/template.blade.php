@@ -45,16 +45,23 @@
                     'bg-gray-900 text-white' => request()->routeIs('dashboard') ,
                     'text-gray-300 hover:bg-gray-700 hover:text-white"'=>!request()->routeIs('dashboard'),
                     ]) aria-current="page">Home</a>
-                <a href="{{ route('users.index') }}" @class([
-                    'rounded-md px-3 py-2 text-base font-medium',
-                    'bg-gray-900 text-white' => request()->routeIs('users.*') ,
-                    'text-gray-300 hover:bg-gray-700 hover:text-white"'=>!request()->routeIs('users.*'),
-                    ])>Usuarios </a>
-                <a href="{{ route('posts.index') }}" @class([
-                    'rounded-md px-3 py-2 text-base font-medium',
-                    'bg-gray-900 text-white' => request()->routeIs('posts.*') ,
-                    'text-gray-300 hover:bg-gray-700 hover:text-white"'=>!request()->routeIs('posts.*'),
-                    ])>Posts</a> </div>
+
+                        @can('user_view')
+                        <a href="{{ route('users.index') }}" @class([
+                            'rounded-md px-3 py-2 text-base font-medium',
+                            'bg-gray-900 text-white' => request()->routeIs('users.*') ,
+                            'text-gray-300 hover:bg-gray-700 hover:text-white"'=>!request()->routeIs('users.*'),
+                            ])>Usuarios</a>
+                            @endcan
+
+                        @can('post_view')
+                        <a href="{{ route('posts.index') }}" @class([
+                            'rounded-md px-3 py-2 text-base font-medium',
+                            'bg-gray-900 text-white' => request()->routeIs('posts.*') ,
+                            'text-gray-300 hover:bg-gray-700 hover:text-white"'=>!request()->routeIs('posts.*'),
+                            ])>Posts</a>
+                        @endcan
+                    </div>
                   </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
