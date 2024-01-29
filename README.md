@@ -1,11 +1,11 @@
 
 
+![image](https://github.com/pedrogones/meu-acl/assets/70417307/93be9ddd-4a82-4126-8363-dfbfcde73ef0)
+![image](https://github.com/pedrogones/meu-acl/assets/70417307/9c52c46b-35e8-44fe-b701-3bc78624260f)
+![image](https://github.com/pedrogones/meu-acl/assets/70417307/9cd5616b-5946-4bf1-9f06-d28855c90a2f)
+![image](https://github.com/pedrogones/meu-acl/assets/70417307/8ca0dc27-70e5-42b6-974b-6de3eb27efce)
 
-![image](https://github.com/pedrogones/meu-acl/assets/70417307/b1f27c14-5b47-4a3c-a546-f0d90823ff47)
-
-![image](https://github.com/pedrogones/meu-acl/assets/70417307/cf15f60d-0cb1-4cda-b8e1-a636e88455e7)
-
-
+required install blade incons
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
