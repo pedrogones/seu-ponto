@@ -5,7 +5,6 @@
 ![image](https://github.com/pedrogones/meu-acl/assets/70417307/9cd5616b-5946-4bf1-9f06-d28855c90a2f)
 ![image](https://github.com/pedrogones/meu-acl/assets/70417307/8ca0dc27-70e5-42b6-974b-6de3eb27efce)
 
-required install blade incons
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
