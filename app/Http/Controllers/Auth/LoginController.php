@@ -8,6 +8,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
+use function Laravel\Prompts\alert;
+
 class LoginController extends Controller
 {
 
@@ -28,9 +30,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }
-        return redirect(RouteServiceProvider::HOME)->with([
-            'status'=>'credenciais inválidas'
-        ]);
+        return redirect(RouteServiceProvider::HOME)->with('error', 'Credenciais inválidas!');
 
     }
     public function destroy(Request $request){

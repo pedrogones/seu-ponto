@@ -1,6 +1,9 @@
 @extends('layouts.template')
 
 @section('content')
+<head>
+    @include('shared.message')
+</head>
 <div class=" px-5 py-2 lg:flex lg:items-center lg:justify-between">
     <div class=" flex justify-between min-w-0 flex-1">
       <h2 class="text-2xl font-bold leading-7 text-indigo-900 sm:truncate sm:text-3xl sm:tracking-tight">Back End Developer</h2>
@@ -57,6 +60,14 @@
                 <div class="mt-2">
                     <input type="password" name="password_confirmation" id="password_confirmation" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
+            </div>
+            <div class="mb-3">
+                <label for="role_id">Permissões</label>
+                <select name="role_id" id="role_id" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                @foreach ($roles as $role)
+               <option value="{{ $role->id }}" selected>{{ $role->name }}</option>
+               @endforeach
+            </select>
             </div>
         </div>
         <div class="mt-6 flex items-center justify-end gap-x-6">

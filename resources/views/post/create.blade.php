@@ -1,6 +1,9 @@
 @extends('layouts.template')
 
 @section('content')
+<head>
+    @include('shared.message')
+</head>
 <div class=" px-5 py-2 lg:flex lg:items-center lg:justify-between">
     <div class=" flex justify-between min-w-0 flex-1">
       <h2 class="text-2xl font-bold leading-7 text-indigo-900 sm:truncate sm:text-3xl sm:tracking-tight">Back End Developer</h2>
@@ -27,6 +30,9 @@
                 <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Título</label>
                 <div class="mt-2">
                     <input style="align-content: center" type="text" name="title" id="title" autocomplete="given-title" class="block w-full rounded-md border-gray-300 focus:outline-none focus:ring focus:border-indigo-300 sm:text-sm">
+                    @error('title')
+                    <div class="text-red-500">{{ $message }}</div>
+                @enderror
                 </div>
             </div>
 
@@ -34,21 +40,28 @@
                 <label for="content" class="block text-sm font-medium leading-6 text-gray-900">Conteúdo</label>
                 <div class="mt-2">
                 <input type="content" name="content" id="content"  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
+                @error('content')
+                <div class="text-red-500">{{ $message }}</div>
+            @enderror
+            </div>
             </div>
             <div class="form-group col-md-6">
-                <div class="mt-2">
-                    <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Autores</label>
-
-                    <select id="user_id" class="bg-gray-40 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="user_id">
-                     @foreach($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('user_id')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
+               @if (auth()->user()->hasRole('Admin')||auth()->user()->hasRole('Super Admin'))
+             @can('post_create')
+             <div class="mt-2">
+                <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Autores</label>
+                <select id="user_id" class="bg-gray-40 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="user_id">
+                    <option value="">Selecione</option>
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>
+                @error('user_id')
+                    <div class="text-red-500">{{ $message }}</div>
+                @enderror
+            </div>
+             @endcan
+               @endif
             </div>
 
         </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,22 +53,36 @@
             background-color: #45a049;
         }
     </style>
-@vite(['resources/css/app.css'])
+    @vite(['resources/css/app.css'])
 </head>
+
 <body class="h-full">
 
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-          <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">ACL - Login</h2>
+            <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt="Your Company">
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">ACL - Login</h2>
         </div>
-    <form class="login-form" action={{ route('login') }} method="post" id="form-logtou">
-        @csrf
-        <input type="email" name="email" placeholder="E-mail" required>
-        <input type="password" name="password" placeholder="Senha" required>
-        <button type="submit">Entrar</button>
-    </form>
-</div>
+        <form class="login-form" action={{ route('login') }} method="post" id="form-logtou">
+
+            @csrf
+
+            <input type="email" name="email" placeholder="E-mail" required>
+            @error('email')
+                <div class="text-red-500">{{ $message }}</div>
+            @enderror
+
+
+            <input type="password" name="password" placeholder="Senha" required>
+            @error('password')
+                <div class="text-red-500">{{ $message }}</div>
+            @enderror
+
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
 
 </body>
+
 </html>
