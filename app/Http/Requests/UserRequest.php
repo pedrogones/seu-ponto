@@ -33,7 +33,7 @@ class   UserRequest extends FormRequest
                 'confirmed',
                 Rule::requiredIf(fn()=>!$this->user)
             ],
-
+            'role_id'=>'required',
         ];
     }
     public function attributes(){
@@ -41,6 +41,7 @@ class   UserRequest extends FormRequest
             'name'=>'nome',
             'email'=>'email',
             'password'=>'senha',
+            'role_id'=>'role_id',
         ];
     }
 }

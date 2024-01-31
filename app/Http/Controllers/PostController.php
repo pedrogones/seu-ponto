@@ -44,16 +44,15 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
      try {
          //  dd($request);
          $data=$request->all();
          Post::query()->create($data);
-
-         return redirect()->route('posts.index')->with('success', 'Registro salvo com sucesso!');
+         return redirect()->route('posts.index')->with('success', 'Item criado com sucesso!');
      } catch (Exception $e) {
-        dd($e);
+       return back()->with('error', 'Não foi possivel criar o post!');
      }
     }
 
@@ -80,11 +79,15 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
+      try {
         $data = $request->all();
         $post->update($data);
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('success', 'Item atualizado com sucesso!');
+      } catch (\Throwable $th) {
+        return back()->with('error', 'Erro ao atualizar o post!');
+      }
     }
 
     /**
@@ -92,7 +95,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+      try {
         $post->delete();
-        return back();
+        return back()->with('success', 'Item removido com sucesso!');
+      } catch (Exception $e) {
+       return back()->with('error', 'Não foi possivel remover!'.$e);
+      }
     }
 }
