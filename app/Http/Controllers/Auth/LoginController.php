@@ -22,15 +22,21 @@ class LoginController extends Controller
         return view('auth.login');
     }
     public function store(Request $request){
+        $mensagens = [
+            'email.required' => 'O campo e-mail é obrigatório.',
+            'email.email' => 'Por favor, insira um endereço de e-mail válido.',
+            'password.required' => 'O campo senha é obrigatório.',
+            'password.min' => 'A senha deve ter pelo menos :min caracteres.',
+        ];
         $data = $request->validate([
         'email'=>'required|email',
-        'password'=>'required',
-        ]);
+        'password'=>'required|min:4',
+        ], $mensagens);
         if(FacadesAuth::attempt($data, $request->remember)){
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }else{
-            return back()->with('error', 'Credenciais inválidas!');
+            return back()->with('errorLogin', 'Credenciais inválidas!');
         }
 
     }
@@ -38,6 +44,6 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
         FacadesAuth::logout();
-        return back();
+        return redirect('/');
     }
 }

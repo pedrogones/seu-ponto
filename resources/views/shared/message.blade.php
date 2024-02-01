@@ -10,6 +10,13 @@
 </div>
 @endif
 
+@if (session('errorLogin'))
+<div id="error-alert" class="bg-red-100 border-l-4 border-red-700 text-red-700 p-4" role="alert">
+    <p class="font-bold">{{ session('errorLogin') }}</p>
+</div>
+@endif
+
+
 <script>
     // Adiciona um atraso de 3 segundos para ocultar o alerta
     setTimeout(function() {

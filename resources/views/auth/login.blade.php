@@ -49,6 +49,12 @@
             width: 100%;
         }
 
+        .error-message {
+            color: #e53e3e;
+            font-size: 1rem;
+            margin-top: 0.25rem;
+        }
+
         .login-form button:hover {
             background-color: #45a049;
         }
@@ -57,30 +63,37 @@
 </head>
 
 <body class="h-full">
-
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt="Your Company">
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">ACL - Login</h2>
         </div>
-        <form class="login-form" action={{ route('login') }} method="post" id="form-logtou">
+        <form class="login-form" style="margin-top: 30px" action={{ route('login') }} method="post" id="form-logtou">
 
             @csrf
 
-            <input type="email" name="email" placeholder="E-mail" required>
-            @error('email')
-                <div class="text-red-500">{{ $message }}</div>
-            @enderror
+            <input type="email" name="email" placeholder="E-mail">
+          
 
+            <input type="password" name="password" placeholder="Senha">
+           
 
-            <input type="password" name="password" placeholder="Senha" required>
-            @error('password')
-                <div class="text-red-500">{{ $message }}</div>
-            @enderror
 
             <button type="submit">Entrar</button>
         </form>
+          <div style="margin-top: 20px">
+            @error('email')
+            <div class="error-message">{{ $message }}</div>
+            @enderror
+            @error('password')
+            <div class="error-message">{{ $message }}</div>
+            @enderror
+          </div>
+        <div style="margin-top: 30px">
+            @include('shared.message')
+        </div>
+
     </div>
 
 </body>
