@@ -40,18 +40,22 @@
                 </div>
             </div>
             <div class="form-group col-md-6">
-                <div class="mt-2">
-                    <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Autores</label>
-                    <select id="user_id" class="bg-gray-40 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="user_id">
-                        <option value="">Selecione aqui</option>
-                        @foreach($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('user_id')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
+                @if (auth()->user()->hasRole('Admin')||auth()->user()->hasRole('Super Admin'))
+             @can('post_create')
+             <div class="mt-2">
+                <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Autores</label>
+                <select id="user_id" class="bg-gray-40 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="user_id">
+                    <option value="">Selecione</option>
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>
+                @error('user_id')
+                    <div class="text-red-500">{{ $message }}</div>
+                @enderror
+            </div>
+             @endcan
+               @endif
             </div>
         </div>
         <div class="mt-6 flex items-center justify-end gap-x-6">

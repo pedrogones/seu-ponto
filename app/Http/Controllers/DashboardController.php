@@ -12,7 +12,6 @@ class DashboardController extends Controller
     }
 
     public function __invoke(Request $request){
-
         $posts = Post::query()->paginate(10);
         return view('dashboard', compact('posts'));
     }

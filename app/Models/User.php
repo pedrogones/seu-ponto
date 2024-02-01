@@ -51,13 +51,14 @@ class User extends Authenticatable
      * hasMany
      */
 
-    public function posts():HasMany{
+    public function posts(): HasMany
+    {
         return $this->hasMany(Post::class);
     }
     public function setPasswordAttribute($value)
     {
-        if(!empty($value)&&!is_null($value)){
-            $this->attributes['password']=bcrypt($value);
+        if (!empty($value) && !is_null($value)) {
+            $this->attributes['password'] = bcrypt($value);
         }
     }
     public function photoProfile(): Attribute
@@ -74,18 +75,18 @@ class User extends Authenticatable
     }
 
     public function role(): Attribute
-{
-    return new Attribute(
-        get: function () {
-            // Verifica se a relação 'roles' existe e não está vazia
-            if ($this->roles && !$this->roles->isEmpty()) {
-                return $this->roles->first()->name;
-            }
+    {
+        return new Attribute(
+            get: function () {
+                // Verifica se a relação 'roles' existe e não está vazia
+                if ($this->roles && !$this->roles->isEmpty()) {
+                    return $this->roles->first()->name;
+                }
 
-            // Se a relação 'roles' não existe ou está vazia, retorne um valor padrão ou lide com isso conforme necessário
-            return 'Sem papel atribuído'; // ou qualquer valor padrão desejado
-        }
-    );
-}
+                // Se a relação 'roles' não existe ou está vazia, retorne um valor padrão ou lide com isso conforme necessário
+                return 'Sem papel atribuído'; // ou qualquer valor padrão desejado
+            }
+        );
+    }
 
 }

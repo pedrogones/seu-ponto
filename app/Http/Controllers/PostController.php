@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -22,12 +23,18 @@ class PostController extends Controller
     }
 
     public function index()
-    {
+{
+    $posts = Post::query()
+        ->when(
+           !auth()->user()->hasRoles(['Admin', 'Super Admin']),
+            function ($query) {
+                $query->where('user_id', Auth::id());
+            }
+        )
+        ->paginate(10);
 
-        $posts=Post::query()->paginate(10);
-
-        return view('post.index', compact('posts'));
-    }
+    return view('post.index', compact('posts'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -50,7 +57,7 @@ class PostController extends Controller
          //  dd($request);
          $data=$request->all();
          Post::query()->create($data);
-         return redirect()->route('posts.index')->with('success', 'Item criado com sucesso!');
+         return redirect()->route('posts.index')->with('success', 'Post criado com sucesso!');
      } catch (Exception $e) {
        return back()->with('error', 'Não foi possivel criar o post!');
      }
@@ -84,7 +91,7 @@ class PostController extends Controller
       try {
         $data = $request->all();
         $post->update($data);
-        return redirect()->route('posts.index')->with('success', 'Item atualizado com sucesso!');
+        return redirect()->route('posts.index')->with('success', 'Post atualizado com sucesso!');
       } catch (\Throwable $th) {
         return back()->with('error', 'Erro ao atualizar o post!');
       }
@@ -97,7 +104,7 @@ class PostController extends Controller
     {
       try {
         $post->delete();
-        return back()->with('success', 'Item removido com sucesso!');
+        return back()->with('success', 'Post removido com sucesso!');
       } catch (Exception $e) {
        return back()->with('error', 'Não foi possivel remover!'.$e);
       }

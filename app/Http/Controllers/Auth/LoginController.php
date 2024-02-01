@@ -29,8 +29,9 @@ class LoginController extends Controller
         if(FacadesAuth::attempt($data, $request->remember)){
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
+        }else{
+            return back()->with('error', 'Credenciais inválidas!');
         }
-        return redirect(RouteServiceProvider::HOME)->with('error', 'Credenciais inválidas!');
 
     }
     public function destroy(Request $request){
