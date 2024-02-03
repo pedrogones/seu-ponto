@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            {{ config('app.name') }}
+           Acl - Basic
         </title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
