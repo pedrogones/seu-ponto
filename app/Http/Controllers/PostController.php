@@ -77,6 +77,7 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::find($id);
+        $this->authorize('update', $post);
         $users=User::query()->whereHas('roles', function($query){
             $query->where('name', 'Author');
         })->get();
@@ -102,6 +103,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
       try {
         $post->delete();
         return back()->with('success', 'Post removido com sucesso!');
