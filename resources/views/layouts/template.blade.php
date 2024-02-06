@@ -54,38 +54,57 @@
                             ])>Usuarios</a>
                             @endcan
 
-                        @can('post_view')
-                        <a href="{{ route('posts.index') }}" @class([
+                            @can('post_view')
+                           @if (!auth()->user()->hasRole('User'))
+                           <a href="{{ route('posts.index') }}" @class([
                             'rounded-md px-3 py-2 text-base font-medium',
                             'bg-gray-900 text-white' => request()->routeIs('posts.*') ,
                             'text-gray-300 hover:bg-gray-700 hover:text-white"'=>!request()->routeIs('posts.*'),
                             ])>Posts</a>
-                        @endcan
+                           @endif
+                            @endcan
+
                     </div>
                   </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
 
+                <div class="relative ml-1">
+                    <p class="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:text-white">
+                        {{ $user->name }}
+                    </p>
+                </div>
                   <!-- Profile dropdown -->
                   <div x-data="{ dropdownProfile: false }" class="relative ml-3">
                     <div>
                         <button @click="dropdownProfile = !dropdownProfile" type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                             <span class="absolute -inset-1.5"></span>
                             <span class="sr-only">Open user menu</span>
-                            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                            <img class="h-8 w-8 rounded-full" src={{ $user->photoProfile }} alt="">
                         </button>
                     </div>
 
                     <!-- Dropdown menu, show/hide based on menu state. -->
-                    <div x-show="dropdownProfile" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <!-- Active: "bg-gray-100", Not Active: "" -->
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit()" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sair</a>
-                        <form action="{{ route('logout') }}" id="form-logout" class="hidden" method="POST">
-                            @csrf
+                    <div style="margin-top:25px" x-show="dropdownProfile" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <div class="w-auto rounded-lg border-2 border-indigo-500 bg-transparent p-4 text-center shadow-lg dark:bg-gray-800">
+                              <figure class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-500 dark:bg-indigo-600">
+                                <img src="{{ $user->photoProfile }}">
+                              </figure>
+                              <h2 class="mt-4 text-xl font-bold text-indigo-600 dark:text-indigo-400">{{ $user->name }}</h2>
+                              <p class="mb-4 text-gray-600 dark:text-gray-300">{{ $user->email }}</p>
+                              <div class="flex items-center justify-center">
+                                <button  @click="dropdownProfile = !dropdownProfile" class="rounded-full bg-gray-600 px-4 py-2 text-white hover:bg-gray-700 dark:bg-gray-400 dark:hover:bg-indigo-500" style="margin-right: 15px">Fechar</button>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit()"  class="rounded-full bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 dark:bg-indigo-400 dark:hover:bg-indigo-500">Logout</a>
+                                <form action="{{ route('logout') }}" id="form-logout" class="hidden" method="POST">
+                                      @csrf
 
-                        </form>
+                                  </form>
+                              </div>
+                              </div>
+
                     </div>
+
                 </div>
               </div>
             </div>
