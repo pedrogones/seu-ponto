@@ -20,8 +20,9 @@ class UserController extends Controller
 
     public function index()
     {
+
         $users = User::query()->paginate(10);
-        return view('user.index', ['users' => $users]);
+        return view('user.index', compact('users'));
     }
 
     public function create()

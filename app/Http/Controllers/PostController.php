@@ -24,6 +24,7 @@ class PostController extends Controller
 
     public function index()
 {
+
     $posts = Post::query()
         ->when(
            !auth()->user()->hasRoles(['Admin', 'Super Admin']),
