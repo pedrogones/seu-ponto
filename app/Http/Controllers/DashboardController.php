@@ -13,7 +13,7 @@ class DashboardController extends Controller
 
     public function __invoke(Request $request){
         $posts = Post::query()->paginate(10);
-        $user = auth()->user();
-        return view('dashboard', compact('posts', 'user'));
+
+        return view('dashboard', compact('posts'));
     }
 }

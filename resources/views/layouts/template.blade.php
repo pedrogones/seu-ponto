@@ -72,7 +72,7 @@
 
                 <div class="relative ml-1">
                     <p class="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:text-white">
-                        {{ $user->name }}
+                        {{  Auth::user()->name}}
                     </p>
                 </div>
                   <!-- Profile dropdown -->
@@ -81,7 +81,7 @@
                         <button @click="dropdownProfile = !dropdownProfile" type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                             <span class="absolute -inset-1.5"></span>
                             <span class="sr-only">Open user menu</span>
-                            <img class="h-8 w-8 rounded-full" src={{ $user->photoProfile }} alt="">
+                            <img class="h-8 w-8 rounded-full" src={{ Auth::user()->photoProfile }} alt="">
                         </button>
                     </div>
 
@@ -89,10 +89,10 @@
                     <div style="margin-top:25px" x-show="dropdownProfile" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <div class="w-auto rounded-lg border-2 border-indigo-500 bg-transparent p-4 text-center shadow-lg dark:bg-gray-800">
                               <figure class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-500 dark:bg-indigo-600">
-                                <img src="{{ $user->photoProfile }}">
+                                <img src="{{Auth::user()->photoProfile }}">
                               </figure>
-                              <h2 class="mt-4 text-xl font-bold text-indigo-600 dark:text-indigo-400">{{ $user->name }}</h2>
-                              <p class="mb-4 text-gray-600 dark:text-gray-300">{{ $user->email }}</p>
+                              <h2 class="mt-4 text-xl font-bold text-indigo-600 dark:text-indigo-400">{{ Auth::user()->name  }}</h2>
+                              <p class="mb-4 text-gray-600 dark:text-gray-300">{{ Auth::user()->email }}</p>
                               <div class="flex items-center justify-center">
                                 <button  @click="dropdownProfile = !dropdownProfile" class="rounded-full bg-gray-600 px-4 py-2 text-white hover:bg-gray-700 dark:bg-gray-400 dark:hover:bg-indigo-500" style="margin-right: 15px">Fechar</button>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit()"  class="rounded-full bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 dark:bg-indigo-400 dark:hover:bg-indigo-500">Logout</a>

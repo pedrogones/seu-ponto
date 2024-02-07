@@ -20,9 +20,10 @@ class UserController extends Controller
 
     public function index()
     {
-
+        $user = auth()->user();
         $users = User::query()->paginate(10);
-        return view('user.index', compact('users'));
+        //dd($user);
+        return view('user.index', compact('users', 'user'));
     }
 
     public function create()
