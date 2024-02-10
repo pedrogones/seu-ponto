@@ -94,12 +94,13 @@
                               <h2 class="mt-4 text-xl font-bold text-indigo-600 dark:text-indigo-400">{{ Auth::user()->name  }}</h2>
                               <p class="mb-4 text-gray-600 dark:text-gray-300">{{ Auth::user()->email }}</p>
                               <div class="flex items-center justify-center">
-                                <button  @click="dropdownProfile = !dropdownProfile" class="rounded-full bg-gray-600 px-4 py-2 text-white hover:bg-gray-700 dark:bg-gray-400 dark:hover:bg-indigo-500" style="margin-right: 15px">
-                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <button title="Fechar"  @click="dropdownProfile = !dropdownProfile" class="rounded-full bg-gray-600 px-4 py-2 text-white hover:bg-gray-700 dark:bg-gray-400 dark:hover:bg-indigo-500" style="margin-right: 15px">
+
+                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
   </svg>
                                 </button>
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit()"  class="rounded-full bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 dark:bg-indigo-400 dark:hover:bg-indigo-500">
+                                <a title="Sair" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit()"  class="rounded-full bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 dark:bg-indigo-400 dark:hover:bg-indigo-500">
                                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.8a1.2 1.2 0 0 1-1.2 1.2H5.2A1.2 1.2 0 0 1 4 18.8V7.2A1.2 1.2 0 0 1 5.2 6h4.6m4.4-2H20v5.8m-7.9 2L20 4.2"/>
                                       </svg>
