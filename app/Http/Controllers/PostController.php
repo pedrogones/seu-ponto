@@ -104,12 +104,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $this->authorize('delete', $post);
       try {
         $post->delete();
         return back()->with('success', 'Post removido com sucesso!');
       } catch (Exception $e) {
-       return back()->with('error', 'Não foi possivel remover!'.$e);
+       return back()->with('error', 'Não foi possivel remover!');
       }
     }
 }
