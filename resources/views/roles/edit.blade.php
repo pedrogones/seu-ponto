@@ -8,7 +8,7 @@
     <div class=" px-5 py-2 lg:flex lg:items-center lg:justify-between">
         <div class=" flex justify-between min-w-0 flex-1">
             <h2 class="text-2xl font-bold leading-7 text-indigo-900 sm:truncate sm:text-3xl sm:tracking-tight">Back End
-                Permissões</h2>
+                Funções</h2>
             <a href="{{ route('roles.index') }}"
                 class="inline-flex items-center rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">
                 <svg style="margin-right: 15px" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
