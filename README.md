@@ -1,11 +1,10 @@
 
 
 ![image](https://github.com/pedrogones/meu-acl/assets/70417307/93be9ddd-4a82-4126-8363-dfbfcde73ef0)
-![image](https://github.com/pedrogones/meu-acl/assets/70417307/9c52c46b-35e8-44fe-b701-3bc78624260f)
-![image](https://github.com/pedrogones/meu-acl/assets/70417307/9cd5616b-5946-4bf1-9f06-d28855c90a2f)
-![image](https://github.com/pedrogones/meu-acl/assets/70417307/8ca0dc27-70e5-42b6-974b-6de3eb27efce)
-![image](https://github.com/pedrogones/meu-acl/assets/70417307/14475bb2-cdc3-4f7f-9bb0-f5ee7a5124cf)
-
+![image](https://github.com/pedrogones/meu-acl/assets/70417307/1f3fb4a8-0239-402e-be59-5e73b64013c0)
+![image](https://github.com/pedrogones/meu-acl/assets/70417307/9a79f054-2942-4251-95ac-7ad72b303049)
+![image](https://github.com/pedrogones/meu-acl/assets/70417307/995e66f3-cf11-42e0-b9bd-1a6a93a8100a)
+![image](https://github.com/pedrogones/meu-acl/assets/70417307/697d460c-7f8f-4cfb-8008-4b4eff2b3754)
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
