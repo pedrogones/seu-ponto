@@ -62,7 +62,15 @@
                             'text-gray-300 hover:bg-gray-700 hover:text-white"'=>!request()->routeIs('posts.*'),
                             ])>Posts</a>
                            @endif
-                            @endcan
+                           @endcan
+                           @if (auth()->user()->hasRole('Super Admin'))
+                           <a href="{{ route('permissions.index') }}" @class([
+                            'rounded-md px-3 py-2 text-base font-medium',
+                            'bg-gray-900 text-white' => request()->routeIs('permissions.*') ,
+                            'text-gray-300 hover:bg-gray-700 hover:text-white"'=>!request()->routeIs('permissions.*'),
+                            ])>Permissões</a>
+                           @endif
+
 
                     </div>
                   </div>
