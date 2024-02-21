@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +26,5 @@ Route::group(['middleware' => ['auth', 'permission:post_view']], function () {
 });
 Route::resource('users', UserController::class);
 Route::resource('posts', PostController::class);
-Route::resource('permissions', PermissionController::class)->parameter('permissions', 'role');
+Route::resource('roles', RoleController::class);
 

@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Role;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PermissionRequest extends FormRequest
+class RoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,9 +22,16 @@ class PermissionRequest extends FormRequest
      */
     public function rules(): array
     {
-
+        if ($this->method()==='PUT') {
+            return [
+                'name'=>['
+                required']];
+        }
         return [
-        'name'=>'required',
+        'name'=>['
+        required',
+        'unique:roles,name'
+    ],
         ];
     }
     public function messages(): array
@@ -31,6 +39,7 @@ class PermissionRequest extends FormRequest
 
         return [
         'name.required'=>'Campo nome é obrigatório!',
+        'name.unique'=>'Essa permissão já existe!',
         ];
     }
 }

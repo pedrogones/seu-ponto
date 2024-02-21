@@ -64,11 +64,11 @@
                            @endif
                            @endcan
                            @if (auth()->user()->hasRole('Super Admin'))
-                           <a href="{{ route('permissions.index') }}" @class([
+                           <a href="{{ route('roles.index') }}" @class([
                             'rounded-md px-3 py-2 text-base font-medium',
-                            'bg-gray-900 text-white' => request()->routeIs('permissions.*') ,
+                            'bg-gray-900 text-white' => request()->routeIs('roles.*') ,
                             'text-gray-300 hover:bg-gray-700 hover:text-white"'=>!request()->routeIs('permissions.*'),
-                            ])>Permissões</a>
+                            ])>Funções</a>
                            @endif
 
 
