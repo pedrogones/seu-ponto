@@ -6,6 +6,10 @@
 ![image](https://github.com/pedrogones/meu-acl/assets/70417307/995e66f3-cf11-42e0-b9bd-1a6a93a8100a)
 ![image](https://github.com/pedrogones/meu-acl/assets/70417307/697d460c-7f8f-4cfb-8008-4b4eff2b3754)
 
+O que é um ACL?
+Uma Access Control List (ACL) é uma lista de regras que determina quais permissões são concedidas ou negadas a usuários ou sistemas em um sistema de computadores ou rede. Essas listas são usadas para controlar o acesso a recursos, como arquivos, pastas, impressoras, redes e serviços.
+
+Em geral, uma ACL é aplicada a um objeto específico (por exemplo, um arquivo, diretório ou interface de rede), e cada entrada na lista especifica quais usuários ou sistemas têm permissão para acessar esse objeto e quais ações específicas são permitidas ou negadas.
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
