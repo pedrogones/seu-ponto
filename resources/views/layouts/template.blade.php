@@ -92,8 +92,6 @@
                             <img class="h-8 w-8 rounded-full" src={{ Auth::user()->photoProfile }} alt="">
                         </button>
                     </div>
-
-                    <!-- Dropdown menu, show/hide based on menu state. -->
                     <div style="margin-top:25px" x-show="dropdownProfile" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <div class="w-auto rounded-lg border-2 border-indigo-500 bg-transparent p-4 text-center shadow-lg dark:bg-gray-800">
                               <figure class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-500 dark:bg-indigo-600">
