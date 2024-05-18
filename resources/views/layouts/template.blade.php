@@ -137,4 +137,11 @@
           </nav>
        @yield('content')
     </body>
+    <!-- Rodapé -->
+  <footer class="mt-auto bg-gray-900 text-white py-4 fixed bottom-0 w-full" style="position: sticky fixed bottom-0 vw-full">
+    <div class="container mx-auto px-4">
+      <p class="text-center">Desenvolvido por Ana Laura, Arthur Ramón, Davi Baratto, Pedro Gomes - 2024</p>
+      <p class="text-center">Disciplina: Programação Funcional - Professor Andrei Formiga</p>
+    </div>
+  </footer>
 </html>
