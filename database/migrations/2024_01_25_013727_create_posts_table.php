@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->onDelete('CASCADE');
             $table->string('title');
+            $table->string('category');
             $table->text('content');
 
             $table->timestamps();

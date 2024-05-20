@@ -24,6 +24,7 @@ class PostController extends Controller
         $this->middleware('permission:post_delete')->only('destroy');
     }
 
+
     public function index()
 {
     $posts = Post::query()
@@ -48,7 +49,14 @@ class PostController extends Controller
             $query->where('id', 4);
         })
         ->get();
-        return view('post.create', compact('users'));
+        $categories = [
+            'Esportes',
+            'Moda',
+            'Artes',
+            'Notícias',
+            'Variados'
+        ];
+        return view('post.create', compact('users', 'categories'));
     }
 
     /**
@@ -57,12 +65,13 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
      try {
-         //  dd($request);
+        //dd($request);
          $data=$request->all();
          Post::query()->create($data);
          return redirect()->route('posts.index')->with('success', 'Post criado com sucesso!');
      } catch (Exception $e) {
-       return back()->with('error', 'Não foi possivel criar o post!');
+        dd($e->getMessage());
+        return back()->with('error', 'Não foi possível criar o post!: ' . $e->getMessage());
      }
     }
 
