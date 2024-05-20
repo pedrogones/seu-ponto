@@ -1,16 +1,15 @@
 @extends('layouts.template')
 @section('content')
-<div class="bg-white py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+<div class="bg-white py-4 sm:py-4">
+    <div class="mx-auto max-w-7xl px-6 ">
       <div class="mx-auto max-w-2xl lg:mx-0">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Posts</h2>
-        <p class="mt-2 text-lg leading-8 text-gray-600">Posts publisheds</p>
+        <p class="px-5  mt-2 text-lg leading-8 text-gray-600">Publicações</p>
       </div>
-      <div style="border-radius: 20px" class="mt-10 grid max-w-2xl grid-cols-3 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-
+      <div style="border-radius: 20px" class="bg-red-100 mt-4 px-4 grid max-w-2xl grid-cols-3 gap-x-8 gap-y-16 border-t border-gray-100 sm:pt-4 lg:mx-0 lg:max-w-none lg:grid-cols-3">
            @foreach($posts as $post)
-          <div class="bg-emerald-200" style="border-radius: 20px">
-            <article style="margin-left:15px; margin-top:5px" class="flex max-w-xl flex-col items-start justify-between">
+          <div class="bg-emerald-200 mb-4" style="border-radius: 20px">
+           <article style="margin-left:15px;" class="flex max-w-xl flex-col items-start justify-between">
                 <div class="flex items-center gap-x-4 text-xs">
                   <time datetime="2020-03-16" class="text-gray-500">{{ $post->created_at->diffForHumans() }}</time>
                   <p class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ $post->catergory ?? 'Categoria'}}</a>
@@ -39,11 +38,15 @@
               </article>
           </div>
            @endforeach
-
-
-        <!-- More posts... -->
       </div>
     </div>
   </div>
+   <!-- Rodapé -->
+   <footer class="mt-20 bg-gray-900 text-white fixed bottom-0 w-full" style="position: sticky fixed bottom-0 w-full">
+    <div class="container mx-auto">
+      <p class="text-center">Desenvolvido por Pedro Gomes - 2024</p>
+
+    </div>
+  </footer>
 
 @endsection

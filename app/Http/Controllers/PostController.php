@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use App\Models\Permission;
 use App\Models\Post;
+use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -24,7 +26,6 @@ class PostController extends Controller
 
     public function index()
 {
-
     $posts = Post::query()
         ->when(
            !auth()->user()->hasRoles(['Admin', 'Super Admin']),
@@ -42,10 +43,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        $users=User::query()->whereHas('roles', function($query){
-            $query->where('name', 'Author');
-        })->get();
-
+        $users = User::query()
+        ->whereHas('roles', function ($query) {
+            $query->where('id', 4);
+        })
+        ->get();
         return view('post.create', compact('users'));
     }
 

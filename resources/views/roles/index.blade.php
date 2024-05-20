@@ -1,5 +1,4 @@
 @extends('layouts.template')
-
 @section('content')
 
 <div class=" px-5 py-2 lg:flex lg:items-center lg:justify-between">
