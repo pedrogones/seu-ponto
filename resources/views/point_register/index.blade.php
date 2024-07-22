@@ -25,13 +25,6 @@
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead class="bg-gray-50 dark:bg-gray-800">
                             <tr>
-
-                                <!-- @if (auth()->user()->hasRole('Admin') || auth()->user()->hasRole('Super Admin'))
-    <th scope="col"
-                                                                        class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                                        Ponto
-                                                                    </th>
-    @endif -->
                                 <th scope="col"
                                     class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     Ponto
@@ -54,14 +47,6 @@
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                             @foreach ($attendaces as $attendace)
                                 <tr>
-                                    <!--   @if (auth()->user()->hasRole('Admin') || auth()->user()->hasRole('Super Admin'))
-    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                                                                            <div>
-                                                                                <h2 class="font-medium text-gray-800 dark:text-white ">
-                                                                                    {{ $attendace->user->name }}</h2>
-                                                                            </div>
-                                                                        </td>
-    @endif -->
                                     <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                         <div>
                                             <h2 class="font-medium text-gray-800 dark:text-white ">

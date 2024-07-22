@@ -2,7 +2,7 @@
 
 <head>
     <title>
-        Acl - Basic
+        Seu Ponto
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -40,10 +40,6 @@
                     </button>
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="flex flex-shrink-0 items-center">
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                            alt="Your Company">
-                    </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
@@ -63,14 +59,14 @@
                                 ])>Usuarios</a>
                             @endcan
 
-                            @can('post_view')
+                            @if (!auth()->user()->hasRole('User'))
                                 <a href="{{ route('posts.index') }}" @class([
                                     'rounded-md px-3 py-2 text-base font-medium',
                                     'bg-gray-900 text-white' => request()->routeIs('posts.*'),
                                     'text-gray-300 hover:bg-gray-700 hover:text-white"' => !request()->routeIs(
                                         'posts.*'),
                                 ])>Posts</a>
-                            @endcan
+                            @endif
                             @if (auth()->user()->hasRole('Super Admin'))
                                 <a href="{{ route('roles.index') }}" @class([
                                     'rounded-md px-3 py-2 text-base font-medium',
@@ -81,7 +77,7 @@
                             @endif
                             <a href="{{ route('bater-ponto.index') }}" @class([
                                 'rounded-md px-3 py-2 text-base font-medium',
-                                'bg-gray-900 text-white',
+                                'bg-gray-900 text-white' => request()->routeIs('bater-ponto.*'),
                                 'text-gray-300 hover:bg-gray-700 hover:text-white"' => !request()->routeIs(
                                     'bater-ponto.*'),
                             ])>Registrar ponto</a>
